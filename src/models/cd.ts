@@ -1,12 +1,12 @@
 export class CD { // export permet de dire a une classe qu'elle est accessible depuis l'exterieur
-    id!:number; // "!" dire qu'il est obligatoire
+    id!:number; // "!" dit que la variable est obligatoire
     title!:string;
     author!:string;
     price!:number;
     thumbnail!:string;
     dateDeSortie!:Date;
     quantite!:number;
-    onsale?:boolean; // "?" pas obligatoire
+    onsale?:boolean; // "?" dit que la variable est optionnelle
 
     constructor(title:string, author:string, price:number, thumbnail:string, dateDeSortie:Date, quantite:number, onsale?:boolean) {
         this.title = title;

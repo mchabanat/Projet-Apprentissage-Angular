@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CD } from '../../models/cd';
 
 @Component({
   selector: 'app-cd',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./cd.component.scss']
 })
 export class CdComponent {
+  @Input() leCd!: CD; // @Input permet de dire a Angular que le composant va recevoir des données depuis l'exterieur
 
+  onAddCd() {
+    this.leCd.quantite++;
+  }
 }

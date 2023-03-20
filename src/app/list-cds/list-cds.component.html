@@ -1,7 +1,5 @@
-<p>list-cds works!</p>
-
 <div class="list-cd">
-    <ng-container *ngFor="let CD of listcd"> <!-- Parcours de la liste pour affichage de chaque element -->
-        <app-cd></app-cd>
+    <ng-container *ngFor="let unCD of listcd"> <!-- Parcours de la liste pour affichage de chaque element -->
+        <app-cd *ngIf="unCD.quantite > 0" [leCd]="unCD"></app-cd>
     </ng-container>
 </div>
