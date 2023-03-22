@@ -1,4 +1,13 @@
+.monheader {
+    height: 15vh;
+}
+
 h1 {
     font-size: 3em;
     color: blue;
+}
+
+nav {
+    display: flex;
+    gap: 15px;
 }
