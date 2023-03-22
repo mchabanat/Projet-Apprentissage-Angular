@@ -1,13 +1,26 @@
 .monheader {
     height: 15vh;
+    margin-bottom: 50px;
 }
 
 h1 {
     font-size: 3em;
     color: blue;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 nav {
     display: flex;
     gap: 15px;
+    justify-content: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.5em;
+    padding: 10px;
+    background-color: rgb(240, 240, 240);
+    border-radius: 10px;
 }

@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CD } from '../../models/cd';
+import { CdsService } from '../services/cds.service';
 
 @Component({
   selector: 'app-cd',
@@ -8,8 +10,21 @@ import { CD } from '../../models/cd';
 })
 export class CdComponent {
   @Input() leCd!: CD; // @Input permet de dire a Angular que le composant va recevoir des données depuis l'exterieur
+  unCd !: CD;
+
+  constructor(private cdservice:CdsService, private router:ActivatedRoute) { }
+
+  ngOnInit(): void {
+    const idcd = this.router.snapshot.params['id'];
+    // Je verifie si mon idcd est défini
+    if (idcd !== undefined) {
+      this.unCd = this.cdservice.getCdById(+idcd); // +idcd permet de convertir la chaine de caractere en nombre
+    } else {
+      this.unCd = this.leCd;
+    }
+  }
 
   onAddCd() {
-    this.leCd.quantite++;
+    this.unCd.quantite++;
   }
 }
