@@ -24,4 +24,13 @@ export class CdsService {
     }
     throw new Error('CD introuvable');
   }
+
+  addCd(cd: CD): Observable<CD> {
+    return this.getAllCds().pipe(
+      map(cds => [...cds].sort((a,b) => a.id - b.id)),
+      map(cds_tries => cds_tries[cds_tries.length-1]),
+      map(cd_max => (cd.id = cd_max.id + 1)),
+      switchMap(() => this.http.post<CD>('http://localhost:3000/CD', cd))
+    );
+  }
 }

@@ -16,7 +16,7 @@
             </div>
             <div class="form-group">
                 <label for="dateDeSortie">Date de sortie</label>
-                <input type="text" class="form-control" id="dateDeSortie" formControlName="dateDeSortie">
+                <input type="date" class="form-control" id="dateDeSortie" formControlName="dateDeSortie">
             </div>
             <div class="form-group">
                 <label for="price">Prix</label>
@@ -26,7 +26,7 @@
                 <label for="quantite">Quantité</label>
                 <input type="number" class="form-control" id="quantite" formControlName="quantite">
             </div>
-            <button type="submit" (click)="addCD()">Ajouter le CD</button>
+            <button type="submit" (click)="onAddCD()" [disabled]="formulaire.invalid">Ajouter le CD</button>
         </form>
     </section>
     <section class="vueForm">

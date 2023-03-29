@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { CD } from 'src/models/cd';
+import { CdsService } from '../services/cds.service';
+import { RouterModule, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-cd',
@@ -13,8 +15,9 @@ export class NewCDComponent implements OnInit {
   formulaire !: FormGroup
   currentCD$!: Observable<CD> // '$' sert a indiquer que c'est un observable 
 
+  router!: Router;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private monService: CdsService) { }
 
   ngOnInit(): void {
     let thumbRegex = new RegExp('https?:\/\/.*\.(?:png|jpg|jpeg|gif|svg|webp)$'); 
@@ -43,7 +46,19 @@ export class NewCDComponent implements OnInit {
     })))
   }
 
-  addCD() {
-    console.log(this.formulaire.value);
+  onAddCD() {
+    let newCD: CD = {
+      id: 0,
+      title: this.formulaire.get('title')?.value,
+      author: this.formulaire.get('author')?.value,
+      thumbnail: this.formulaire.get('thumbnail')?.value,
+      price: this.formulaire.get('price')?.value,
+      dateDeSortie: this.formulaire.get('dateDeSortie')?.value,
+      quantite: this.formulaire.get('quantite')?.value
+    }
+
+    this.monService.addCd(newCD).pipe(
+      tap(() => this.router.navigateByUrl('/catalog'))
+    ).subscribe();
   }
 }
