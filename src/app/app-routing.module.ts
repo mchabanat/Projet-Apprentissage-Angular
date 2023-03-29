@@ -4,11 +4,13 @@ import { RouterModule, Route } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ListCDsComponent } from './list-cds/list-cds.component';
 import { CdComponent } from './cd/cd.component';
+import { NewCDComponent } from './new-cd/new-cd.component';
 
 const routes: Route[] = [
   { path: '', component: HomeComponent },
   { path: 'catalog', component: ListCDsComponent },
-  { path: 'cd/:id', component: CdComponent }
+  { path: 'cd/:id', component: CdComponent },
+  { path: 'nouveaucd', component: NewCDComponent }
 ];
 
 @NgModule({
